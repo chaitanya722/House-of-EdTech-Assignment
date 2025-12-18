@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import DeleteTaskButton from "./DeleteTaskButton"
+import ToggleStatusButton from "./ToggleStatusButton"
 
 /* ---------------- SERVER ACTIONS ---------------- */
 
@@ -93,13 +94,13 @@ export default async function DashboardPage() {
 
               <div className="flex items-center gap-3 text-sm">
                 {/* Toggle Status */}
-                <form action={toggleStatusAction}>
-                  <input type="hidden" name="taskId" value={task.id} />
-                  <input type="hidden" name="status" value={task.status} />
-                  <button className="text-blue-500 hover:underline">
-                    {task.status === "TODO" ? "Mark Done" : "Mark Todo"}
-                  </button>
-                </form>
+                <ToggleStatusButton
+                  taskId={task.id}
+                  status={task.status}
+                  action={toggleStatusAction}
+                />
+
+
 
                 {/* Edit */}
                 <Link
@@ -110,7 +111,7 @@ export default async function DashboardPage() {
                 </Link>
 
                 {/* Delete */}
-               
+
                 <DeleteTaskButton taskId={task.id} />
 
               </div>

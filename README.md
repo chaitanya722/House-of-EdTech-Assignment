@@ -10,7 +10,7 @@ The application demonstrates modern full-stack development practices including a
 
  **Live URL:** *Add your Vercel deployment link here*
 
- **GitHub Repository:** *Add your GitHub repo link here*
+ **GitHub Repository:** https://github.com/chaitanya722/House-of-EdTech-Assignment.git
 
 ---
 

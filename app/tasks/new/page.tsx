@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { createTask } from "./server-actions"
 
 export default function NewTaskPage() {
   const [title, setTitle] = useState("")
@@ -23,24 +24,21 @@ export default function NewTaskPage() {
     })
 
     const data = await res.json()
-
     setLoading(false)
 
     if (data.description) {
       setDescription(data.description)
       setPriority(data.priority || "MEDIUM")
-    
+
       if (data.fallback) {
-        alert("AI quota exceeded. Showing a default suggestion.")
+        alert("AI quota exceeded. Showing default suggestion.")
       }
     }
-    
   }
 
   return (
     <form
-      action="/tasks/new"
-      method="POST"
+      action={createTask}
       className="max-w-md mx-auto p-6 space-y-4"
     >
       <h1 className="text-xl font-bold">Create Task</h1>
@@ -57,8 +55,8 @@ export default function NewTaskPage() {
       <button
         type="button"
         onClick={generateWithAI}
-        className="text-sm text-blue-600 underline"
-        disabled={loading}
+        className="text-sm text-blue-600 underline disabled:opacity-50"
+        disabled={loading || !title}
       >
         {loading ? "Generating..." : "Generate with AI"}
       </button>
