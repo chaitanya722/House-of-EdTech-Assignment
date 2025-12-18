@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "House of EdTech Assignment",
+  title: "taskflow ai",
   description: "A secure task management app built with Next.js and PostgreSQL",
 }
 

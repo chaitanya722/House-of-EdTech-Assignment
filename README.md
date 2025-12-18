@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# House of EdTech Assignment
 
-## Getting Started
+A full-stack, secure, and user-friendly **Task Management CRUD application** built using **Next.js 16 (App Router)**, **TypeScript**, **PostgreSQL**, and **Prisma** as part of the **House of EdTech technical assignment**.
 
-First, run the development server:
+The application demonstrates modern full-stack development practices including authentication, authorization, server actions, database relations, and optional AI-powered enhancements.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Live Demo
+
+ **Live URL:** *Add your Vercel deployment link here*
+
+ **GitHub Repository:** *Add your GitHub repo link here*
+
+---
+
+##  Problem Statement
+
+Develop a full-stack CRUD application that:
+
+* Uses modern Next.js architecture
+* Implements secure authentication & authorization
+* Handles real-world production concerns
+* Optionally leverages AI for enhanced user experience
+
+This project is designed for individual users to manage their tasks efficiently in a secure, scalable, and intuitive way.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+* **Next.js 16 (App Router)**
+* **TypeScript**
+* **Tailwind CSS**
+* **Server Components & Client Components**
+
+### Backend (Built into Next.js)
+
+* **Server Actions** (for secure mutations)
+* **API Routes** (for auth & AI)
+* **NextAuth (Credentials Provider)**
+
+### Database
+
+* **PostgreSQL**
+* **Prisma ORM**
+
+### AI (Optional Add-on)
+
+* **OpenAI API** – AI Task Description Generator
+
+### Deployment
+
+* **Vercel** (Hosting)
+* **Neon** (PostgreSQL Database)
+
+---
+
+##  Features
+
+###  Authentication & Authorization
+
+* User registration & login
+* Secure password hashing using **bcrypt**
+* Protected routes using server-side session checks
+* User-scoped data access (users can only see/manage their own tasks)
+
+### Task Management (CRUD)
+
+* Create tasks with title, description, priority, and status
+* View all tasks in a personalized dashboard
+* Edit task details
+* Toggle task status (TODO / DONE)
+* Delete tasks with confirmation
+
+###  AI Task Description Generator (Optional)
+
+* Generate task descriptions and priority suggestions using AI
+* AI is implemented as an **optional productivity enhancement**
+* Graceful fallback when AI quota is unavailable
+
+###  UI & UX
+
+* Clean, responsive UI
+* Accessible forms and layouts
+* Empty states and confirmations
+* Persistent footer with author details
+
+---
+
+##  Application Architecture
+
+This project follows a **modern full-stack Next.js architecture**:
+
+* **Server Components** for data fetching and page rendering
+* **Server Actions** for secure database mutations
+* **API Routes** for authentication and AI integration
+* **Prisma ORM** for database access
+
+There is **no separate backend server** (e.g., Express). The backend logic is co-located within the Next.js application, following industry best practices.
+
+---
+
+##  Project Structure
+
+```
+app/
+ ├── api/                # API routes (auth, register, AI)
+ ├── dashboard/          # Protected dashboard
+ ├── tasks/              # Create & edit tasks
+ ├── layout.tsx          # Root layout + footer
+ └── page.tsx            # Landing / entry page
+
+lib/
+ ├── prisma.ts           # Prisma client
+ └── auth.ts             # NextAuth configuration
+
+prisma/
+ └── schema.prisma       # Database schema
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+##  Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file with the following variables:
 
-## Learn More
+```env
+DATABASE_URL=postgresql://...
+NEXTAUTH_SECRET=your-secret-key
+NEXTAUTH_URL=http://localhost:3000
+OPENAI_API_KEY=your-openai-key   # Optional
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ▶️ Running the Project Locally
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Install dependencies
+npm install
 
-## Deploy on Vercel
+# Run Prisma migrations
+npx prisma migrate dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Start development server
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## ☁️ Deployment
+
+The application is deployed using:
+
+* **Vercel** for hosting
+* **Neon** for managed PostgreSQL
+
+Production database migrations are applied using:
+
+```bash
+npx prisma migrate deploy
+```
+
+---
+
+## AI Usage Explanation
+
+AI is used as an **optional add-on feature** to enhance productivity by generating task descriptions and suggesting priorities based on the task title.
+
+If the AI service is unavailable or quota is exceeded, the application gracefully falls back to default suggestions, ensuring uninterrupted functionality.
+
+---
+
+## Author
+
+**Chaitanya Pawar**
+
